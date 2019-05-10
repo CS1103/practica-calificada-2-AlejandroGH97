@@ -4,31 +4,35 @@
 
 #include "catch2.h"
 #include "Arena.h"
-#include "Fighter.h"
 #include "Fight.h"
-
+#include "ChuckNorris.h"
+#include "JasonStatham.h"
+#include "BruceLee.h"
 
 
 TEST_CASE("Test arena:"){
-    Fighter testF1;
+    JasonStatham testF1;
     testF1.addAttack('F');
+    testF1.addAttack('P');
     testF1.addDefense('A');
-    REQUIRE(testF1.attack()==10);
+
+    REQUIRE(testF1.attack()==11);
     REQUIRE(testF1.defense()==8);
-    Fighter testF2;
+
+    BruceLee testF2;
     testF2.addAttack('S');
     testF2.addDefense('E');
 
     Fight fight(&testF1, &testF2);
     Arena arena;
-    REQUIRE(arena.run(&fight)->score == 9);
+    REQUIRE(arena.run(&fight)->score == 10);
     REQUIRE(arena.run(&fight)->winner==&testF1);
 
-    Fighter testF3;
+    ChuckNorris testF3;
     testF3.addAttack('F');
     testF3.addDefense('A');
 
-    Fighter testF4;
+    BruceLee testF4;
     testF4.addAttack('S');
     testF4.addDefense('E');
 
@@ -36,7 +40,7 @@ TEST_CASE("Test arena:"){
 
     arena.addFight(&fight);
 
-    REQUIRE(arena.get_fights()[0]->score == 9);
+    REQUIRE(arena.get_fights()[0]->score == 10);
     REQUIRE(arena.get_fights()[0]->winner==&testF1);
 
     arena.addFight(&fight2);
