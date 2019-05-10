@@ -18,9 +18,13 @@ public:
             winner = a;
             score = a->attack()-b->defense();
         }
-        else{
+        else if(a->attack()-b->defense()<b->attack()-a->defense()){
             winner = b;
             score = b->attack()-a->defense();
+        }
+        else if(a->attack()-b->defense()==b->attack()-a->defense()){
+            winner = nullptr;
+            score = 0;
         }
     }
 };

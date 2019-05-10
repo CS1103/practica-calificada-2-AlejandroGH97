@@ -8,6 +8,7 @@
 #include "ChuckNorris.h"
 #include "JasonStatham.h"
 #include "BruceLee.h"
+#include "fstream"
 
 
 TEST_CASE("Test arena:"){
@@ -48,7 +49,19 @@ TEST_CASE("Test arena:"){
     REQUIRE(arena.get_fights()[1]->score == 9);
     REQUIRE(arena.get_fights()[1]->winner==&testF3);
 
+    ChuckNorris testF5;
+    testF3.addAttack('F');
+    testF3.addDefense('A');
 
+    BruceLee testF6;
+    testF4.addAttack('F');
+    testF4.addDefense('A');
+
+    Fight fight3(&testF5, &testF6);
+    REQUIRE(fight3.winner == nullptr);
+    REQUIRE(fight3.score == 0);
+
+    std::vector<Fighter*> peleadores;
 
 
 
