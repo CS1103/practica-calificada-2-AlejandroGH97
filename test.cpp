@@ -2,6 +2,7 @@
 // Created by alejandro on 5/10/19.
 //
 
+#include <iostream>
 #include "catch2.h"
 #include "Arena.h"
 #include "Fight.h"
@@ -61,8 +62,19 @@ TEST_CASE("Test arena:"){
     REQUIRE(fight3.winner == nullptr);
     REQUIRE(fight3.score == 0);
 
-    std::vector<Fighter*> peleadores;
 
+    std::vector<Fighter*> peleadores;
+    std::ifstream peleas("peleas2.txt");
+    std::string nombre_peleador;
+    char ataque;
+    char defensa;
+    int peleador = 0;
+
+    while(!peleas.eof()){
+        getline(peleas,nombre_peleador);
+        peleadores.emplace_back(new Fighter());
+        peleas>>ataque;
+    }
 
 
 }
